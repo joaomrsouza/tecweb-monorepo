@@ -1,0 +1,107 @@
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ordem de serviço | Assistência Técnica de Celular</title>
+  </head>
+  <body>
+    <h1>Ordem de serviço</h1>
+    <a href="./index.html"><= Voltar para home</a>
+
+    <h2>Solicitar ordem de serviço</h2>
+    <form action="" method="post">
+      <div>
+        Nome
+        <br />
+        <input type="text" name="nome" />
+      </div>
+      <div>
+        CPF
+        <br />
+        <input type="text" name="cpf" placeholder="000.000.000-00" />
+      </div>
+      <div>
+        <h4>Endereço</h4>
+        <div>
+          Rua
+          <br />
+          <input type="text" name="rua" />
+        </div>
+        <div>
+          CEP
+          <br />
+          <input type="text" name="cep" placeholder="00000-000" />
+        </div>
+        <div>
+          Estado
+          <br />
+          <select name="estado">
+            <option value="AC">AC</option>
+            <option value="AL">AL</option>
+            <option value="AP">AP</option>
+            <option value="AM">AM</option>
+            <option value="BA">BA</option>
+            <option value="CE">CE</option>
+            <option value="DF">DF</option>
+            <option value="ES">ES</option>
+            <option value="GO">GO</option>
+            <option value="MA">MA</option>
+            <option value="MT">MT</option>
+            <option value="MS">MS</option>
+            <option value="MG">MG</option>
+            <option value="PA">PA</option>
+            <option value="PB">PB</option>
+            <option value="PR">PR</option>
+            <option value="PE">PE</option>
+            <option value="PI">PI</option>
+            <option value="RJ">RJ</option>
+            <option value="RN">RN</option>
+            <option value="RS">RS</option>
+            <option value="RO">RO</option>
+            <option value="RR">RR</option>
+            <option value="SC">SC</option>
+            <option value="SP">SP</option>
+            <option value="SE">SE</option>
+            <option value="TO">TO</option>
+          </select>
+        </div>
+        <div>
+          Cidade
+          <br />
+          <input type="text" name="cidade" />
+        </div>
+      </div>
+      <div>
+        <h4>Celular</h4>
+        <div>
+          Modelo
+          <br />
+          <select name="modelo">
+            <option value="LG">LG</option>
+            <option value="Motorola">Motorola</option>
+            <option value="Samsung">Samsung</option>
+            <option value="Apple">Apple</option>
+            <option value="Xiaomi">Xiaomi</option>
+            <option value="OnePlus">OnePlus</option>
+            <option value="Lenovo">Lenovo</option>
+          </select>
+        </div>
+        <div>
+          Relato de defeito
+          <br />
+          <textarea name="defeito" rows="5" cols="50" placeholder="Descreva o defeito detalhadamente..."></textarea>
+        </div>
+        <div>
+          Imagem do aparelho
+          <br />
+          <input type="file" name="imagem">
+        </div>
+      </div>
+      <hr>
+      <div>
+        <button type="submit">Enviar</button>
+      </div>
+    </form>
+  </body>
+</html>
