@@ -1,0 +1,174 @@
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro - Cinema</title>
+  </head>
+  <body>
+    <header>
+      <h1>Cadastro</h1>
+      <hr />
+    </header>
+
+    <nav>
+      <a href="./index.html"><= Voltar</a>
+    </nav>
+
+    <br />
+
+    <main>
+      <progress max="100" value="10">10%</progress>
+
+
+      <form action="./cadastro.html" method="post">
+        <label for="dataNascimento">Data de nascimento</label>
+        <br />
+        <input type="date" name="dataNascimento" id="dataNascimento" />
+        <br />
+        <br />
+        <label for="email">Email</label>
+        <br />
+        <input type="email" name="email" id="email" />
+        <br />
+        <br />
+        <label for="telefone">Telefone</label>
+        <br />
+        <input
+          type="tel"
+          name="telefone"
+          id="telefone"
+          pattern="(\d{2})\ \d{4}-\d{4}"
+        />
+        <br />
+        <br />
+        <label for="mesAdesao">Mês de adesão</label>
+        <br />
+        <input type="month" name="mesAdesao" id="mesAdesao" />
+        <br />
+        <br />
+        <label for="filmesSemana">Filmes por semana</label>
+        <br />
+        1<input
+          type="range"
+          min="1"
+          max="7"
+          name="filmesSemana"
+          id="filmesSemana"
+        />7
+        <br />
+        <br />
+        <label for="corPreferencial">Cor preferencial da interface</label>
+        <br />
+        <input type="color" name="corPreferencial" id="corPreferencial" />
+        <br />
+        <br />
+        <label for="urlCliente">Endereço de página pessoal</label>
+        <br />
+        <input type="url" name="urlCliente" id="urlCliente" />
+        <br />
+        <br />
+        <label for="horaPrimeiraCompra"
+          >Data e hora da utilização do cupom de primeira compra</label
+        >
+        <br />
+        <input
+          type="datetime-local"
+          name="horaPrimeiraCompra"
+          id="horaPrimeiraCompra"
+        />
+        <br />
+        <p><b>Preferências de gênero</b></p>
+        <label for="preferenciaGeneroAcao">Preferência do gênero Ação</label>
+        <br />
+        1<input
+          type="range"
+          name="preferenciaGeneroAcao"
+          min="0"
+          max="10"
+          id="preferenciaGeneroAcao"
+        />10
+        <br />
+        <br />
+        <label for="preferenciaGeneroDrama">Preferência do gênero Drama</label>
+        <br />
+        1<input
+          type="range"
+          name="preferenciaGeneroDrama"
+          min="0"
+          max="10"
+          id="preferenciaGeneroDrama"
+        />10
+        <br />
+        <br />
+        <label for="preferenciaGeneroRomance"
+          >Preferência do gênero Romance</label
+        >
+        <br />
+        1<input
+          type="range"
+          name="preferenciaGeneroRomance"
+          min="0"
+          max="10"
+          id="preferenciaGeneroRomance"
+        />10
+        <br />
+        <br />
+        <label for="preferenciaGeneroComedia"
+          >Preferência do gênero Comédia</label
+        >
+        <br />
+        1<input
+          type="range"
+          name="preferenciaGeneroComedia"
+          min="0"
+          max="10"
+          id="preferenciaGeneroComedia"
+        />10
+        <br />
+        <br />
+        <label for="preferenciaGeneroSuspense"
+          >Preferência do gênero Suspense</label
+        >
+        <br />
+        1<input
+          type="range"
+          name="preferenciaGeneroSuspense"
+          min="0"
+          max="10"
+          id="preferenciaGeneroSuspense"
+        />10
+        <br />
+        <br />
+        <label for="preferenciaGeneroTerror"
+          >Preferência do gênero Terror</label
+        >
+        <br />
+        1<input
+          type="range"
+          name="preferenciaGeneroTerror"
+          min="0"
+          max="10"
+          id="preferenciaGeneroTerror"
+        />10
+        <br />
+        <br />
+        <label for="preferenciaGeneroFiccaoCientifica"
+          >Preferência do gênero Ficção científica</label
+        >
+        <br />
+        1<input
+          type="range"
+          name="preferenciaGeneroFiccaoCientifica"
+          min="0"
+          max="10"
+          id="preferenciaGeneroFiccaoCientifica"
+        />10
+        <br />
+        <button type="submit">Enviar</button>
+      </form>
+    </main>
+
+    <footer>Cinema Copyright 2023</footer>
+  </body>
+</html>
