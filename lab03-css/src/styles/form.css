@@ -1,0 +1,65 @@
+/* Form */
+
+form {
+  width: 100%;
+  max-width: 30rem;
+  font-size: large;
+}
+
+form header {
+  font-size: larger;
+
+  display: grid;
+  grid-template-columns: 1fr min-content 19fr;
+  gap: 1rem;
+  align-items: center;
+}
+
+form header div {
+  height: 0.125rem;
+  width: 100%;
+  background-color: hsl(0, 0%, 85%);
+}
+
+form label {
+  display: block;
+  margin: 0.5rem 0 0.25rem 0;
+}
+
+form input,
+form textarea,
+form select {
+  width: 100%;
+  padding: 0.75rem 0.5rem;
+  margin-bottom: 1rem;
+
+  display: block;
+
+  font-size: inherit;
+
+  border: #000 0.125rem solid;
+  border-radius: 0.5rem;
+}
+
+form button {
+  padding: 0.5rem 1rem;
+
+  border: hsl(120, 100%, 40%) 2px solid;
+  border-radius: 0.5rem;
+
+  background-color: white;
+
+  font-size: large;
+  font-weight: bold;
+}
+
+form button:hover {
+  color: white;
+  background-color: hsl(120, 100%, 30%);
+}
+
+#submitArea {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+}

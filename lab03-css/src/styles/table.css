@@ -1,0 +1,19 @@
+/* Table */
+
+table {
+  width: 100%;
+  max-width: 50dvw;
+
+  border: .125rem solid #000;
+  border-collapse: collapse;
+}
+
+table th {
+  padding: .5rem;
+  border: .1rem solid #000;
+}
+
+table td {
+  padding: .5rem;
+  border: .1rem solid #000;
+}

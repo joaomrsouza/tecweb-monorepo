@@ -1,0 +1,173 @@
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assistência Técnica de Celular</title>
+    <link rel="stylesheet" href="./styles/global.css" />
+    <style>
+      /* Navbar */
+
+      nav {
+        background-color: hsl(0, 0%, 90%);
+        padding: 0.5rem;
+        width: 100dvw;
+        max-width: 100%;
+      }
+
+      nav > ul {
+        width: 100%;
+        list-style: none;
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      nav > ul > li {
+        display: inline-block;
+        padding: 0.5rem;
+        border-right: 0.125rem solid #000;
+      }
+
+      nav > ul > li:hover {
+        text-decoration: underline;
+      }
+
+      nav > ul > li:last-child {
+        border: none;
+      }
+
+      nav > ul > li > a {
+        font-size: large;
+        text-decoration: none;
+        color: #000;
+      }
+
+      @media screen and (max-width: 550px) {
+        nav > ul {
+          flex-direction: column;
+        }
+
+        nav > ul > li {
+          display: inline-block;
+          padding: 0.5rem;
+          border: none;
+          border-bottom: 0.125rem solid #000;
+        }
+      }
+
+      /* Hero banner */
+
+      main.hero > img {
+        width: 100dvw;
+        max-width: 100%;
+        height: 90dvh;
+      }
+
+      main.hero > h1 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        padding: 2rem;
+
+        color: #fff;
+        font-size: 5rem;
+        text-align: center;
+        text-shadow: #000 0 0 15rem;
+
+        background: radial-gradient(
+          ellipse,
+          hsl(0, 0%, 0%) 0%,
+          hsla(0, 0%, 0%, 0) 75%,
+          hsla(0, 0%, 0%, 0) 100%);
+
+        /* background: -webkit-radial-gradient(
+          hsl(0, 0%, 0%),
+          hsla(0, 0%, 0%, 0),
+        ); */
+      }
+
+      @media screen and (max-width: 550px) {
+        main.hero > h1 {
+          top: 75%;
+        }
+      }
+
+      /* Footer */
+
+      footer {
+        background-color: hsl(0, 0%, 80%);
+        padding: 0.5rem;
+        width: 100dvw;
+        max-width: 100%;
+      }
+
+      footer > h3 {
+        font-size: x-large;
+        margin-bottom: 1rem;
+      }
+
+      footer > main {
+        display: grid;
+        max-width: 30rem;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      footer > main > p {
+        padding: 0.125rem;
+      }
+
+      #copyright {
+        background-color: hsl(0, 0%, 60%);
+        padding: 0.5rem;
+        width: 100dvw;
+        max-width: 100%;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="./ordemServico.html">Ordem de serviço</a></li>
+        <li><a href="./defeitosComuns.html">Defeitos comuns</a></li>
+        <li><a href="./revendaCelular.html">Revenda de usados</a></li>
+        <li><a href="./revendaAcessorios.html">Revenda de acessórios</a></li>
+        <li><a href="./servicosSoftware.html">Serviços de software</a></li>
+        <li>
+          <a href="./acompanhamentoServico.html">Acompanhamento de serviços</a>
+        </li>
+      </ul>
+    </nav>
+    <main class="hero">
+      <img
+        src="./assets/img/hero_banner.jpg"
+        alt="Smartphone teardown"
+        style="object-fit: cover"
+      />
+      <h1>Assistência Técnica de Celular</h1>
+    </main>
+    <footer>
+      <h3>Informações de contato</h3>
+      <main>
+        <p>
+          Telefone: <a href="tel:+558899999999"><b>(88) 9999-9999</b></a>
+        </p>
+        <p>
+          Email: <a href="mailto:assis@tec.com"><b>assis@tec.com</b></a>
+        </p>
+        <p>
+          Whatsapp: <a href="wa.me/+5588999999999"><b>(88) 9 9999-9999</b></a>
+        </p>
+        <p>
+          Instagram: <a href="instagram.com/assistec"><b>@assistec</b></a>
+        </p>
+      </main>
+    </footer>
+    <div id="copyright">© Copyright</div>
+  </body>
+</html>

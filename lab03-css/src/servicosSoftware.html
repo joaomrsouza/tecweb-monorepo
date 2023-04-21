@@ -1,0 +1,78 @@
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Serviços de software | Assistência Técnica de Celular</title>
+    <link rel="stylesheet" href="./styles/global.css" />
+    <link rel="stylesheet" href="./styles/mainContent.css" />
+    <link rel="stylesheet" href="./styles/form.css" />
+    <style>
+      form > div {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        align-items: center;
+        justify-content: start;
+
+        margin-bottom: 1rem;
+      }
+
+      form > div > div {
+        display: grid;
+        grid-template-columns: min-content min-content;
+        align-items: center;
+        justify-content: start;
+        gap: 0.5rem;
+      }
+
+      form > div > div > input {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Serviços de software</h1>
+      <nav>
+        <a href="./index.html">Home</a>
+        /
+        <a href="./servicosSoftware.html">Serviços de software</a>
+      </nav>
+    </header>
+
+    <main>
+      <h2>Softwares a serem instalados</h2>
+      <form action="" method="post">
+        <div>
+          <div>
+            <input type="checkbox" id="telegram" name="telegram" />
+            <label for="telegram">Telegram</label>
+          </div>
+          <div>
+            <input type="checkbox" id="whatsapp" name="whatsapp" />
+            <label for="whatsapp">Whatsapp</label>
+          </div>
+          <div>
+            <input type="checkbox" id="facebook" name="facebook" />
+            <label for="facebook">Facebook</label>
+          </div>
+          <div>
+            <input type="checkbox" id="instagram" name="instagram" />
+            <label for="instagram">Instagram</label>
+          </div>
+          <div>
+            <input type="checkbox" id="tiktok" name="tiktok" />
+            <label for="tiktok">TikTok</label>
+          </div>
+          <div>
+            <input type="checkbox" id="twitter" name="twitter" />
+            <label for="twitter">Twitter</label>
+          </div>
+        </div>
+        <div id="submitArea">
+          <button type="submit">Solicitar instalação</button>
+        </div>
+      </form>
+    </main>
+  </body>
+</html>
