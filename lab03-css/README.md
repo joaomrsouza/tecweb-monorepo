@@ -1,4 +1,4 @@
-﻿# Laboratório 2: CSS - Inicial
+﻿# Laboratório 3: CSS - Inicial
 
 **UNIVERSIDADE FEDERAL DO CEARÁ – UFC SOBRAL**
 

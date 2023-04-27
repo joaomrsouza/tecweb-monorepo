@@ -1,0 +1,47 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100dvw;
+  height: 100dvh;
+
+  display: flex;
+  flex-direction: column;
+}
+
+div {
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+#div1 {
+  display: block;
+}
+
+#div1, #div4 {
+  background-color: #93c47d;
+}
+
+#div2, #div5 {
+  background-color: #4a86e8;
+}
+
+#div3 {
+  background-color: #b4a7d6;
+}
+
+@media screen and (min-width: 768px) {
+  #div2 {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  div {
+    display: block;
+  }
+}
