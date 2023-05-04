@@ -1,0 +1,16 @@
+div {
+  /* Aumenta a div para quebrar 1 div em tela cheia */
+  min-height: 300px;
+  min-width: 400px;
+}
+
+main {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: end;
+  align-items: start;
+  align-content: flex-start;
+  flex-wrap: wrap;
+
+  gap: 1.5rem;
+}

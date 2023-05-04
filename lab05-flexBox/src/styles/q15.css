@@ -1,0 +1,12 @@
+main {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: start;
+
+  gap: 1.5rem;
+}
+
+main > div:nth-child(3) {
+  order: -1;
+}

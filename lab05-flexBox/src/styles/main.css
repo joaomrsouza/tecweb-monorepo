@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 1rem;
+  padding: .25rem;
+  border: .25rem solid gray;
+  height: calc(100dvh - 2rem);
+  width: calc(100dvw - 2rem);
+}
+
+main {
+  height: 100%;
+}
+
+div {
+  border: 1px solid gray;
+  min-height: 150px;
+  min-width: 225px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: large;
+}
+
+.blue {
+  background-color: #4a86e8;
+}
+
+.red {
+  background-color: #f00;
+}

@@ -1,0 +1,7 @@
+main {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: start;
+
+  gap: 1.5rem;
+}
