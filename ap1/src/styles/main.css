@@ -22,11 +22,11 @@ header {
   justify-content: start;
 }
 
-header > section {
+header>section {
   padding: .5rem;
 }
 
-header > section > img {
+header>section>img {
   width: 100%;
   max-width: 7rem;
   object-fit: cover;
@@ -51,7 +51,7 @@ main {
 
 /* Navbar */
 
-main > nav {
+main>nav {
   padding: 1rem;
 
   display: flex;
@@ -63,7 +63,7 @@ main > nav {
   background-color: #E83E47;
 }
 
-main > nav > section {
+main>nav>section {
   width: 100%;
 
   display: flex;
@@ -72,7 +72,7 @@ main > nav > section {
   justify-content: center;
 }
 
-main > nav > section > ul {
+main>nav>section>ul {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -82,25 +82,25 @@ main > nav > section > ul {
   list-style: none;
 }
 
-main > nav > section > ul > li {
+main>nav>section>ul>li {
   color: #fff;
   cursor: pointer;
 
   text-decoration: none;
 }
 
-main > nav > section > ul > li > a,
-main > nav > section > ul > li > a:visited {
+main>nav>section>ul>li>a,
+main>nav>section>ul>li>a:visited {
   color: #fff;
   text-decoration: none;
 }
 
-main > nav > section > ul > li > a:hover {
+main>nav>section>ul>li>a:hover {
   color: #fff;
   border-bottom: .125rem solid #0B9C30;
 }
 
-main > nav > section > form {
+main>nav>section>form {
   width: 100%;
   max-width: 20rem;
 
@@ -111,7 +111,7 @@ main > nav > section > form {
   justify-content: center;
 }
 
-main > nav > section > form > button {
+main>nav>section>form>button {
   padding: .25rem;
   width: 100%;
   min-width: 35px;
@@ -126,23 +126,23 @@ main > nav > section > form > button {
   cursor: pointer;
 }
 
-main > nav > section > form > button:hover {
+main>nav>section>form>button:hover {
   border-color: #9C1A21;
 }
 
 @media screen and (min-width: 768px) {
-  main > nav {
+  main>nav {
     flex-direction: row;
   }
-  
-  main > nav > section > ul {
+
+  main>nav>section>ul {
     flex-direction: row;
   }
 }
 
 /* Banner */
 
-main > img {
+main>img {
   max-height: 30rem;
   object-fit: cover;
 }
@@ -235,18 +235,18 @@ input:focus {
   margin-bottom: 1rem;
 }
 
-.newsContent > img {
+.newsContent>img {
   width: 100%;
   margin: 1rem;
   object-fit: cover;
 }
 
-.newsContent > div > p {
+.newsContent>div>p {
   margin-top: 1rem;
   text-align: justify;
 }
 
-.newsContent > div > nav {
+.newsContent>div>nav {
   margin-top: 1rem;
 
   display: flex;
@@ -256,7 +256,7 @@ input:focus {
   gap: 1rem;
 }
 
-.imageNewsContent > .imageContainer {
+.imageNewsContent>.imageContainer {
   margin: 1rem;
 
   display: grid;
@@ -268,7 +268,7 @@ input:focus {
   text-align: center;
 }
 
-.imageNewsContent > .imageContainer > div > img {
+.imageNewsContent>.imageContainer>div>img {
   width: 50%;
   max-width: 50%;
   max-height: 100%;
@@ -277,7 +277,7 @@ input:focus {
   object-fit: cover;
 }
 
-.imageNewsContent > .imageContainer > div > p {
+.imageNewsContent>.imageContainer>div>p {
   margin: 0 1rem 0 1rem;
   text-align: justify;
 }
@@ -292,7 +292,7 @@ input:focus {
   gap: 1rem;
 }
 
-.tags > a {
+.tags>a {
   padding: .25rem 1rem;
 
   font-size: small;
@@ -304,7 +304,7 @@ input:focus {
 }
 
 @media screen and (max-width: 480px) {
-  .imageNewsContent > .imageContainer {
+  .imageNewsContent>.imageContainer {
     grid-template-columns: 1fr;
   }
 }
@@ -314,17 +314,18 @@ input:focus {
     flex-direction: row;
   }
 
-  .newsContent > img{
+  .newsContent>img {
     width: 50%;
   }
-  .imageNewsContent > .imageContainer {
+
+  .imageNewsContent>.imageContainer {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
 /* Aside */
 
-aside > div {
+aside>div {
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -334,15 +335,15 @@ aside > div {
   width: 100%;
 }
 
-aside > div > div {
+aside>div>div {
   width: 100%;
 }
 
-aside > div > div > h4 {
+aside>div>div>h4 {
   margin-bottom: .5rem;
 }
 
-aside > div > div > nav > ul {
+aside>div>div>nav>ul {
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -350,20 +351,20 @@ aside > div > div > nav > ul {
   gap: .25rem;
 }
 
-aside > div > div > nav > ul > li {
+aside>div>div>nav>ul>li {
   list-style: none;
 }
 
-aside > div > div > nav > ul > li > a {
+aside>div>div>nav>ul>li>a {
   cursor: pointer;
 }
 
-aside > div > div > nav > ul > li > a:hover {
+aside>div>div>nav>ul>li>a:hover {
   border-bottom: .125rem solid #0B9C30;
 }
 
 @media screen and (min-width: 768px) and (max-width: 1000px) {
-  aside > div {
+  aside>div {
     flex-direction: row;
   }
 }
@@ -380,11 +381,11 @@ aside > div > div > nav > ul > li > a:hover {
   text-align: justify;
 }
 
-#cards > div {
+#cards>div {
   flex-basis: 33.33%;
 }
 
-#cards > .mainBox > h4 {
+#cards>.mainBox>h4 {
   text-align: center;
 }
 
@@ -407,12 +408,12 @@ aside > div > div > nav > ul > li > a:hover {
   margin: 1rem
 }
 
-#newsletter > h4 {
+#newsletter>h4 {
   font-size: x-large;
   text-align: center;
 }
 
-#newsletter > input {
+#newsletter>input {
   padding: .5rem;
   width: 80%;
 
@@ -421,7 +422,7 @@ aside > div > div > nav > ul > li > a:hover {
   outline: none;
 }
 
-#newsletter > button {
+#newsletter>button {
   width: 80%;
   font-size: large;
 }
@@ -433,12 +434,12 @@ aside > div > div > nav > ul > li > a:hover {
   margin: 1rem;
 }
 
-#avaliacoes > h4 {
+#avaliacoes>h4 {
   font-size: x-large;
   margin-bottom: 1rem;
 }
 
-#avaliacoes > div {
+#avaliacoes>div {
   display: grid;
   grid-template-columns: 1fr;
   align-items: center;
@@ -459,30 +460,31 @@ aside > div > div > nav > ul > li > a:hover {
 }
 
 @media screen and (min-width: 1000px) {
-  #avaliacoes > div {
+  #avaliacoes>div {
     grid-template-columns: repeat(3, 1fr);
   }
+
   .avaliacao {
     justify-content: center;
   }
 }
 
-.avaliacao > img {
+.avaliacao>img {
   width: 4rem;
 
   object-fit: cover;
   border-radius: 100%;
 }
 
-.avaliacao > div > h6 {
+.avaliacao>div>h6 {
   font-size: large;
 }
 
-.avaliacao > div > p {
+.avaliacao>div>p {
   text-align: justify;
 }
 
-.avaliacao > div > div {
+.avaliacao>div>div {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -514,7 +516,7 @@ aside > div > div > nav > ul > li > a:hover {
   flex-basis: 50%;
 }
 
-#novidades > div > .newsContent:not(:last-child) {
+#novidades>div>.newsContent:not(:last-child) {
   padding-bottom: 1rem;
   border-bottom: 2px solid #9C1A21;
 }
@@ -541,7 +543,7 @@ aside > div > div > nav > ul > li > a:hover {
   padding: 1rem;
 }
 
-#grid > div:nth-child(2) {
+#grid>div:nth-child(2) {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -549,14 +551,14 @@ aside > div > div > nav > ul > li > a:hover {
   gap: 1rem;
 }
 
-#grid > div:nth-child(2) > div,
-#grid > div:nth-child(2) > div > iframe {
+#grid>div:nth-child(2)>div,
+#grid>div:nth-child(2)>div>a>img {
+  object-fit: cover;
   width: 100%;
-  height: 100%;
 }
 
-#grid > div:last-child > img,
-#grid > div:first-child > img{
+#grid>div:last-child>img,
+#grid>div:first-child>img {
   width: 100%;
   height: 100%;
   object-fit: cover;
