@@ -1,4 +1,4 @@
-# Laboratório 4: CSS - Media Queries
+# Laboratório AP 1 - Bootstrap: CSS e HTML com Bootstrap
 
 **UNIVERSIDADE FEDERAL DO CEARÁ – UFC SOBRAL**
 

@@ -1,4 +1,4 @@
-# Laboratório 4: CSS - Media Queries
+# Laboratório AP 1: CSS e HTML
 
 **UNIVERSIDADE FEDERAL DO CEARÁ – UFC SOBRAL**
 
