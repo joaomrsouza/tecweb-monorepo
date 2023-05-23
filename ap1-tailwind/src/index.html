@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Arcadium</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            rd: {
+              light: "#FF5E66",
+              DEFAULT: "#E83E47",
+              dark: "#9C1A21",
+            },
+            grn: {
+              light: "#3FE86A",
+              DEFAULT: "#5ef383",
+              dark: "#0B9C30",
+            },
+            dark: "#171717",
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-dark text-white">
+  <header class="p-8 flex flex-col items-center md:flex-row">
+    <section>
+      <img class="max-h-40 rounded-full" src="./assets/img/Logo.jpg" alt="">
+    </section>
+    <section class="pl-4">
+      <h1 class="text-3xl font-bold">Arcadium</h1>
+      <p class="text-lg">Tudo o que você precisa saber sobre jogos em um só lugar!</p>
+    </section>
+  </header>
+  <main>
+    <nav class="bg-rd flex flex-col gap-4 justify-between items-center py-4 px-8 sm:flex-row">
+      <section>
+        <ul class="flex flex-col gap-6 sm:flex-row">
+          <li><a class="border-grn-dark cursor-pointer hover:border-b-2" href="/">Home</a></li>
+          <li><a class="border-grn-dark cursor-pointer hover:border-b-2">Notícias</a></li>
+          <li><a class="border-grn-dark cursor-pointer hover:border-b-2">Plataformas</a></li>
+          <li><a class="border-grn-dark cursor-pointer hover:border-b-2">Lançamentos</a></li>
+          <li><a class="border-grn-dark cursor-pointer hover:border-b-2">Ranking</a></li>
+        </ul>
+      </section>
+      <section>
+        <form class="flex flex-row justify-center items-center gap-1">
+          <input type="text" name="search" id="search" placeholder="Pesquisar" class="p-2 w-full border-2 border-rd focus:border-rd-dark rounded text-black col-10">
+          <button type="submit" class="bg-rd-light col-2 p-1 border-rd border-2 outline-none rounded hover:bg-rd-dark" style="min-width: 44px;">
+            <img class="w-8 h-8" src="./assets/svg/search.svg" alt="Ícone de pesquisa">
+          </button>
+        </form>
+      </section>
+    </nav>
+
+    <img class="w-full object-cover mt-4" style="max-height: 30rem;" src="./assets/img/Banner.jpg" alt="Banner principal">
+</body>
+
+</html>
