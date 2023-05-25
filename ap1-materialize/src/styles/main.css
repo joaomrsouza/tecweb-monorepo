@@ -1,0 +1,15 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+
+  color: white !important;
+}
+
+body {
+  background-color: #171717
+}
+
+.bg-red {
+  background-color: #E83E47;
+}

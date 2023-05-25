@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Arcadium</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="./styles/main.css">
+</head>
+
+<body>
+  <header class="row valign-wrapper">
+    <section class="col">
+      <img class="circle" src="./assets/img/Logo.jpg" height="112px" alt="">
+    </section>
+    <section class="col ">
+      <h2>Arcadium</h2>
+      <p>Tudo o que você precisa saber sobre jogos em um só lugar!</p>
+    </section>
+  </header>
+  <main>
+    <nav class="bg-red" style="margin: 1rem 0;">
+      <section class="nav-wrapper row">
+        <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul class="left hide-on-med-and-down col s9">
+          <li><a href="/">Home</a></li>
+          <li><a>Notícias</a></li>
+          <li><a>Plataformas</a></li>
+          <li><a>Lançamentos</a></li>
+          <li><a>Ranking</a></li>
+        </ul>
+        <form class="col s3 hide-on-med-and-down">
+          <section class="input-field">
+            <input type="search" id="search" placeholder="Pesquisar">
+            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+            <i class="material-icons">close</i>
+          </section>
+        </form>
+      </section>
+    </nav>
+
+    <ul class="sidenav bg-red" id="mobile-nav">
+      <li><a href="/">Home</a></li>
+      <li><a>Notícias</a></li>
+      <li><a>Plataformas</a></li>
+      <li><a>Lançamentos</a></li>
+      <li><a>Ranking</a></li>
+    </ul>
+
+    <img width="100%" src="./assets/img/Banner.jpg" alt="Banner principal"
+      style="max-height: 30rem; object-fit: cover;">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+      M.AutoInit();
+    </script>
+</body>
+
+</html>
