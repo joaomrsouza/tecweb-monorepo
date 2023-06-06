@@ -1,0 +1,16 @@
+{
+  "extension-manager.workspace": [
+    "bradlc.vscode-tailwindcss",
+    "esbenp.prettier-vscode",
+    "hwencc.html-tag-wrapper",
+    "jsjzh.color-converter",
+    "ms-dotnettools.csharp",
+    "ms-vsliveshare.vsliveshare",
+    "pranaygp.vscode-css-peek",
+    "ritwickdey.LiveServer",
+    "sainoba.px-to-rem",
+    "techer.open-in-browser",
+    "vincaslt.highlight-matching-tag",
+    "Zignd.html-css-class-completion"
+  ]
+}
