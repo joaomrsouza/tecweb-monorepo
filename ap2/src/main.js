@@ -1,5 +1,4 @@
 // !Cada segundo fora pista reduz em 15% a velocidade do carro.
-// TODO: Adicionar as decorações
 
 const DEBUG = false;
 const FPS = 120;
@@ -9,7 +8,7 @@ const CAR_DIMENSIONS = {
   height: 100,
 };
 const TERRAIN_COLORS = {
-  grass: "#053c03",
+  grass: "#323f13",
   snow: "#f5f5f5",
   desert: "#c29519",
 };
@@ -74,6 +73,16 @@ const OBSTACLES = {
     },
   },
 };
+const DECORATIONS = {
+  spawnRate: 0.05,
+  props: {
+    grass: {
+      width: 50,
+      height: 50,
+      color: "green",
+    },
+  },
+};
 
 let calculateInterval;
 let renderInterval;
@@ -82,6 +91,7 @@ let trackInterval;
 
 const globals = {
   player: {
+    distance: 0,
     x: window.innerWidth / 2,
     speed: -100,
     fuel: 100,
@@ -101,6 +111,7 @@ const globals = {
   },
   pressedKeys: new Set(),
   obstacles: [],
+  decorations: [],
   currentScenario: {
     terrain: "grass",
     scenario: "day",
@@ -109,6 +120,7 @@ const globals = {
     width: window.innerWidth,
     height: window.innerHeight,
   },
+  softDarkness: false,
 };
 
 // ====================
@@ -131,6 +143,7 @@ function game() {
 
 function resetGame() {
   globals.player = {
+    distance: 0,
     x: window.innerWidth / 2,
     speed: -100,
     fuel: 100,
@@ -142,9 +155,10 @@ function resetGame() {
     speedDelta: 20,
     sprite: Math.floor(Math.random() * 10),
   };
-  globals.track = "right";
+  globals.track = "up";
   globals.pressedKeys = new Set();
   globals.obstacles = [];
+  globals.decorations = [];
 }
 
 function setListeners() {
@@ -165,7 +179,7 @@ function update() {
     1000
   );
   trackInterval = setInterval(() => {
-    if (Math.random() < TRACKS.changeRate) {
+    if (globals.player.speed > 0 && Math.random() < TRACKS.changeRate) {
       globals.track =
         TRACKS.types[Math.floor(Math.random() * TRACKS.types.length)];
     }
@@ -176,6 +190,7 @@ function render() {
   resetDOM();
   renderFrames();
   renderObstacles();
+  renderDecorations();
   renderPlayer();
 }
 
@@ -189,6 +204,7 @@ function calculate() {
   calculateCollisions();
   calculateMovement();
   calculateObstacles();
+  calculateDecorations();
 }
 
 function calculateInput() {
@@ -277,6 +293,8 @@ function calculateCollisions() {
 }
 
 function calculateMovement() {
+  globals.player.distance += (globals.player.speed + 100) / TICK_RATE;
+
   // Update player
   if (
     globals.player.x - globals.player.width / 2 > 0 &&
@@ -335,6 +353,22 @@ function calculateMovement() {
       }
     }
     return obstacle;
+  });
+
+  // Update decorations
+  globals.decorations = globals.decorations.map((decoration) => {
+    const yDelta = 15;
+    const expressions = {
+      grass: {
+        y: (100 + globals.player.speed) / yDelta,
+      },
+    };
+
+    const decorationExpressions = expressions[decoration.type];
+
+    decoration.y += decorationExpressions.y;
+
+    return decoration;
   });
 }
 
@@ -398,6 +432,59 @@ function calculateObstacles() {
   }
 }
 
+function calculateDecorations() {
+  // Remove distant decorations
+  globals.decorations = globals.decorations.filter((obstacle) => {
+    return obstacle.y < globals.screen.height + 1000;
+  });
+
+  // Randomly add decoration
+  if (Math.random() > 1 - DECORATIONS.spawnRate) {
+    const type = "grass";
+    // DECORATIONS.types[Math.floor(Math.random() * DECORATIONS.types.length)];
+
+    const id = `${type}-${globals.decorations.length}`;
+
+    const leftLimits = [
+      DECORATIONS.props[type].width / 2,
+      globals.screen.width * 0.05 - DECORATIONS.props[type].width / 2,
+    ];
+    const rightLimits = [
+      globals.screen.width * 0.95 + DECORATIONS.props[type].width / 2,
+      globals.screen.width - DECORATIONS.props[type].width / 2,
+    ];
+
+    let x = 0;
+    let y = 0;
+    const TRY_LIMIT = 50;
+    let tries = 0;
+
+    do {
+      x = [
+        Math.random() * (leftLimits[1] - leftLimits[0]) + leftLimits[0],
+        Math.random() * (rightLimits[1] - rightLimits[0]) + rightLimits[0],
+      ][Math.floor(Math.random() * 2)];
+      y = -100 - Math.random() * 200;
+      tries++;
+    } while (
+      tries < TRY_LIMIT &&
+      globals.decorations.some(
+        (decoration) =>
+          Math.abs(x - decoration.x) <
+            DECORATIONS.props[decoration.type].width +
+              DECORATIONS.props[type].width &&
+          Math.abs(y - decoration.y) <
+            DECORATIONS.props[decoration.type].height +
+              DECORATIONS.props[type].height
+      )
+    );
+
+    const sprite = Math.floor(Math.random() * 4);
+
+    tries < TRY_LIMIT && globals.decorations.push({ id, x, y, type, sprite });
+  }
+}
+
 function resetDOM() {
   $`root`.innerHTML = "";
 }
@@ -409,13 +496,77 @@ function renderFrames() {
   $filters.style.height = `${globals.screen.height}px`;
   $filters.style.position = "absolute";
   if (["night", "fog"].includes(globals.currentScenario.scenario)) {
-    $filters.style.backgroundColor = "#00000090";
+    $filters.style.background = globals.softDarkness
+      ? "linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.1) 100%)"
+      : "linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.565) 100%)"; // rgba(0,0,0,0.565)
   }
   if (globals.currentScenario.scenario === "fog") {
     $filters.style.filter = "contrast(0.1)";
   }
   $filters.style.zIndex = 10;
   $`root`.appendChild($filters);
+
+  const $textureSide = document.createElement("div");
+  $textureSide.id = "textureSide";
+  $textureSide.style.width = `${globals.screen.width}px`;
+  $textureSide.style.height = `${globals.screen.height}px`;
+  $textureSide.style.position = "absolute";
+  $textureSide.style.zIndex = 1;
+  $textureSide.style.backgroundImage = `linear-gradient(transparent 50%, rgba(${
+    globals.currentScenario.terrain === "snow" ? "0,0,0" : "255,255,255"
+  },.05) 50%)`;
+  $textureSide.style.backgroundSize = "100px 100px";
+  $textureSide.style.backgroundPositionY = `${globals.player.distance * 5}px`;
+  $`root`.appendChild($textureSide);
+
+  const $textureTrackStatic = document.createElement("div");
+  $textureTrackStatic.id = "textureTrackStatic";
+  $textureTrackStatic.style.width = `${globals.screen.width * 0.7}px`;
+  $textureTrackStatic.style.height = `${globals.screen.height * 0.4}px`;
+  $textureTrackStatic.style.position = "absolute";
+  $textureTrackStatic.style.left = "15%";
+  $textureTrackStatic.style.top = "40%";
+  $textureTrackStatic.style.zIndex = 1;
+  $textureTrackStatic.style.background = `
+    linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+    linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+    linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+    linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+    linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+    linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424)`;
+  $textureTrackStatic.style.backgroundColor = "#131313";
+  $textureTrackStatic.style.backgroundSize = "20px 20px";
+  $textureTrackStatic.style.backgroundPositionY = `${
+    globals.player.distance * 5
+  }px`;
+  $`root`.appendChild($textureTrackStatic);
+
+  const $textureTrackDynamic = document.createElement("div");
+  $textureTrackDynamic.id = "textureTrackDynamic";
+  $textureTrackDynamic.style.width = `${globals.screen.width}px`;
+  $textureTrackDynamic.style.height = `${globals.screen.height * 0.4}px`;
+  $textureTrackDynamic.style.position = "absolute";
+  $textureTrackDynamic.style.zIndex = 1;
+  $textureTrackDynamic.style.background = `
+    linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+    linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+    linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+    linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+    linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+    linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424)`;
+  $textureTrackDynamic.style.backgroundColor = "#131313";
+  $textureTrackDynamic.style.backgroundSize = "20px 20px";
+  $textureTrackDynamic.style.backgroundPositionY = `${
+    globals.player.distance * 5
+  }px`;
+  $textureTrackDynamic.style.webkitMaskImage = `url(./assets/track-${globals.track}.png)`;
+  $textureTrackDynamic.style.maskImage = `url(./assets/track-${globals.track}.png)`;
+  $textureTrackDynamic.style.webkitMaskSize = "100% 100%";
+  $textureTrackDynamic.style.maskSize = "100% 100%";
+  $textureTrackDynamic.style.webkitMaskPosition = "center";
+  $textureTrackDynamic.style.maskPosition = "center";
+
+  $`root`.appendChild($textureTrackDynamic);
 
   const $main = document.createElement("div");
   $main.id = "main";
@@ -520,9 +671,11 @@ function renderObstacles() {
     $obstacle.style.backgroundColor = DEBUG ? obstacleProps.color : "unset";
     $obstacle.style.border = DEBUG ? "5px solid red" : "";
     $obstacle.style.position = "absolute";
-    $obstacle.style.filter = "contrast(-0.9)";
     $obstacle.style.transition = "transform 0.2s ease-in-out";
-    $obstacle.style.zIndex = ["car", "fuel"].includes(obstacle.type) ? 5 : 1;
+    $obstacle.style.zIndex = ["car", "fuel"].includes(obstacle.type) ? 5 : 4;
+    $obstacle.style.boxShadow = ["car", "fuel"].includes(obstacle.type)
+      ? "0px 10px 10px -10px rgba(255,0,0,1)"
+      : "unset";
     $obstacle.style.transform = `translate(${
       obstacle.x - obstacleProps.width / 2
     }px, ${obstacle.y - obstacleProps.height}px)`;
@@ -540,6 +693,37 @@ function renderObstacles() {
   });
 }
 
+function renderDecorations() {
+  globals.decorations.forEach((decoration) => {
+    const decorationProps = DECORATIONS.props[decoration.type];
+
+    const $decoration = document.createElement("div");
+    $decoration.id = decoration.id;
+    $decoration.style.width = `${decorationProps.width}px`;
+    $decoration.style.height = `${decorationProps.height}px`;
+    $decoration.style.backgroundColor = DEBUG ? decorationProps.color : "unset";
+    $decoration.style.border = DEBUG ? "5px solid blue" : "";
+    $decoration.style.position = "absolute";
+    $decoration.style.zIndex = 3;
+    $decoration.style.transition = "transform 0.2s ease-in-out";
+    $decoration.style.transform = `translate(${
+      decoration.x - decorationProps.width / 2
+    }px, ${decoration.y - decorationProps.height}px)`;
+
+    const sprites = {
+      grass: `url('./assets/${globals.currentScenario.terrain}-${
+        decoration.type
+      }-${
+        globals.currentScenario.terrain === "desert" ? 0 : decoration.sprite
+      }.png')`,
+    };
+
+    $decoration.style.backgroundImage = sprites[decoration.type];
+
+    $`dynamic`.appendChild($decoration);
+  });
+}
+
 function renderPlayer() {
   const $player = document.createElement("div");
   $player.id = "player";
@@ -548,10 +732,13 @@ function renderPlayer() {
   $player.style.backgroundColor = DEBUG ? "green" : "unset";
   $player.style.border = DEBUG ? "5px solid lime" : "";
   $player.style.transition = "transform 0.2s ease-in-out";
+  $player.style.zIndex = 5;
   $player.style.transform = `translateX(${
     globals.player.x - globals.screen.width / 2
   }px)`;
   $player.style.backgroundImage = `url("./assets/car-${globals.player.sprite}.png")`;
+  $player.style.boxShadow = "0px 10px 10px -10px rgba(255,0,0,1)";
+
   $`static`.appendChild($player);
 }
 
@@ -583,6 +770,10 @@ function setMenuListeners() {
   });
 }
 
+function onOff(state) {
+  return state ? "on" : "off";
+}
+
 function renderScenarios() {
   const $scenarios = document.createElement("div");
   $scenarios.id = "scenarios";
@@ -595,7 +786,33 @@ function renderScenarios() {
   $scenarios.style.justifyContent = "center";
   $scenarios.style.backgroundColor = "black";
   $scenarios.style.color = "white";
-  $scenarios.innerHTML = `<h1>Enduro WEB</h1><br/><h2>Scenarios</h2><br/><button id="day" class="on">Day</button><button id="night" class="off">Night</button><button id="fog" class="off">Fog</button><h2>Terrain</h2><button id="grass" class="on">Grass</button><button id="snow" class="off">Snow</button><button id="desert" class="off">Desert</button><button id="start">Start</button><br/>`;
+  $scenarios.innerHTML = `
+    <h1>Enduro WEB</h1><br/>
+    <h2>Terrain</h2>
+    <button id="grass" class="${onOff(
+      globals.currentScenario.terrain === "grass"
+    )}">Grass</button>
+    <button id="snow" class="${onOff(
+      globals.currentScenario.terrain === "snow"
+    )}">Snow</button>
+    <button id="desert" class="${onOff(
+      globals.currentScenario.terrain === "desert"
+    )}">Desert</button><br/>
+    <h2>Scenarios</h2>
+    <button id="day" class="${onOff(
+      globals.currentScenario.scenario === "day"
+    )}">Day</button>
+    <button id="night" class="${onOff(
+      globals.currentScenario.scenario === "night"
+    )}">Night</button>
+    <button id="fog" class="${onOff(
+      globals.currentScenario.scenario === "fog"
+    )}">Fog</button><br/>
+    <h2>Extra</h2>
+    <button id="softDarkness" class="${onOff(
+      globals.softDarkness
+    )}">Soft Darkness</button><br/>
+    <button id="start">Start</button>`;
   $`root`.appendChild($scenarios);
   setScenariosListeners();
 }
@@ -641,6 +858,11 @@ function setScenariosListeners() {
     $(terrain).addEventListener("click", function () {
       selectTerrain(this);
     });
+  });
+  $`softDarkness`.addEventListener("click", function () {
+    globals.softDarkness = !globals.softDarkness;
+    this.classList.toggle("on");
+    this.classList.toggle("off");
   });
 }
 
